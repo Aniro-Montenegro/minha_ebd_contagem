@@ -1,17 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:minha_ebd/bd/database_helper.dart';
-import 'package:minha_ebd/page/igreja_form_page.dart';
-import 'package:minha_ebd/page/igreja_list_page.dart';
-import 'package:minha_ebd/page/pagina_inicial.dart';
-import 'package:minha_ebd/page/professor_lista_page.dart';
-import 'package:minha_ebd/screen/splash_screen.dart';
+import 'package:minha_ebd/pages/home_page.dart';
+
+import 'package:hive_ce_flutter/hive_flutter.dart';
+
+// Models
+import 'package:minha_ebd/models/igreja.dart';
+import 'package:minha_ebd/models/superintendente.dart';
+import 'package:minha_ebd/models/professor.dart';
+import 'package:minha_ebd/models/classe.dart';
+import 'package:minha_ebd/models/aula.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await DatabaseHelper.instance.database;
 
-  runApp(MyApp());
+  // 🔹 Inicializa o Hive CE
+  await Hive.initFlutter();
+
+  // 🔹 Registra os adapters
+  Hive.registerAdapter(IgrejaAdapter());
+  Hive.registerAdapter(SuperintendenteAdapter());
+  Hive.registerAdapter(ProfessorAdapter());
+  Hive.registerAdapter(ClasseAdapter());
+  Hive.registerAdapter(AulaAdapter());
+
+  // 🔹 Abre os boxes
+  await Hive.openBox<Igreja>('igrejas');
+  await Hive.openBox<Superintendente>('superintendentes');
+  await Hive.openBox<Professor>('professores');
+  await Hive.openBox<Classe>('classes');
+  await Hive.openBox<Aula>('aulas');
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,21 +47,12 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [Locale('pt', 'BR')],
-
-      title: 'Studioso',
+      title: 'Minha EBD',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      routes: {
-        '/pagina_inicial': (context) => PaginaInicial(),
-        '/igrejas_page': (context) => IgrejaPage(),
-        '/igreja_form': (context) => IgrejaFormPage(),
-        '/professores_page': (context) => ProfessorListPage(),
-      },
-      home: SplashScreen(
-        duration: const Duration(milliseconds: 3000),
-        nextScreen: PaginaInicial(),
-      ),
+      home: const HomePage(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:minha_ebd/page/pagina_inicial.dart';
+import 'package:minha_ebd/pages/home_page.dart';
+import 'package:minha_ebd/services/navigato_to_page.dart';
 
 class MenuIconButton extends StatelessWidget {
   const MenuIconButton({super.key});
@@ -7,17 +8,10 @@ class MenuIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: const Icon(Icons.arrow_back, size: 30, color: Colors.white),
-      tooltip: 'Voltar ao início',
-      onPressed: () => _voltarParaHome(context),
-    );
-  }
-
-  void _voltarParaHome(BuildContext context) {
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (context) => const PaginaInicial()),
-      (Route<dynamic> route) => false,
+      icon: const Icon(Icons.menu, color: Colors.white),
+      onPressed: () {
+        NavigateToPage.toWidget(context, const HomePage());
+      },
     );
   }
 }

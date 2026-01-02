@@ -1,49 +1,31 @@
 import 'package:flutter/material.dart';
 
 class ConfigColors {
-  // Cores originais mantidas
-  static const Color appBlack = Color(0xFF03060D);
-  static const Color colorGreen = Color(0xFF5DD91A);
-  static const Color mahogany = Color(0xFF8C4E37);
-  static const Color softClay = Color(0xFFBF8D7A);
-  static const Color crimsonRed = Color(0xFF8C0303);
-  static const Color lightGray = Color(0xFFD9D9D9);
-  static const Color colorBlue = Color(0xFF1CA6FC);
-  static const Color colorOrange = Color(0xFFFFAB36);
-  static const Color colorRed = Color(0xFFE3001A);
-  static const Color intermediario = Color(0xFF0468BF);
-  static const Color iniciante = Color(0xFF82CD00);
-  static const Color avancado = Color(0xFFFAA234);
-  static const Color virtuoso = Color(0xFFFF1434);
+  // Cores principais do tema
+  static Color primaryBlue = const Color(0xFF035AA6);
+  static Color primaryBlueLight1 = const Color(0xFF3A7BB8);
+  static Color primaryBlueLight2 = const Color(0xFF6F9CCB);
+  static Color primaryBlueLight3 = const Color(0xFFA4BDDD);
+  static Color accentYellow = const Color(0xFFBBBF45);
+  static Color darkOlive = const Color(0xFF736D24);
+  static Color lightBeige = const Color(0xFFD9C7B8);
+  static Color warmBrown = const Color(0xFFA66038);
 
-  static const Color colorWhite = Color(0xFFFFFFFF);
+  // color text appBar title
+  static Color textAppBarTitle = const Color(0xFFF2F2F2);
 
-  // Novas cores baseadas na foto da Bíblia
-  static const Color bibleGreen1 = Color(0xFF285954); // Verde musgo escuro
-  static const Color bibleGreen2 = Color(0xFF86A694); // Verde musgo claro
-  static const Color bibleGreen3 = Color(
-    0xFF152610,
-  ); // Verde floresta muito escuro
-  static const Color bibleGreen4 = Color(0xFF25400B); // Verde floresta
-  static const Color bibleGreen5 = Color(0xFF3B590C); // Verde folha
+  // color text title card home page
+  static Color textTitleCardHomePage = const Color(0xFF0B0C0D);
 
-  // Cores de sombra/acento
-  static const Color shadowTeal1 = Color(0xFF285954); // Igual ao bibleGreen1
-  static const Color shadowTeal2 = Color(0xFF2AD1C0); // Turquesa brilhante
-  static const Color shadowTeal3 = Color(0xFF32FCE8); // Turquesa neon
-  static const Color shadowTeal4 = Color(0xFF23B0A2); // Turquesa médio
-  static const Color shadowTeal5 = Color(0xFF1D8F83); // Turquesa escuro
-
-  // Gradientes sugeridos
-  static LinearGradient bibleBackgroundGradient = const LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [bibleGreen1, bibleGreen3],
+  // Versões RGBA (opcionais - se precisar de transparência)
+  static Color primaryBlueWithOpacity = const Color.fromRGBO(3, 89, 165, 1.0);
+  static Color accentYellowWithOpacity = const Color.fromRGBO(
+    187,
+    191,
+    68,
+    1.0,
   );
-
-  static LinearGradient tealAccentGradient = const LinearGradient(
-    begin: Alignment.centerLeft,
-    end: Alignment.centerRight,
-    colors: [shadowTeal4, shadowTeal2],
-  );
+  static Color darkOliveWithOpacity = const Color.fromRGBO(114, 109, 35, 1.0);
+  static Color lightBeigeWithOpacity = const Color.fromRGBO(216, 199, 184, 1.0);
+  static Color warmBrownWithOpacity = const Color.fromRGBO(165, 96, 56, 1.0);
 }
